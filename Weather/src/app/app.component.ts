@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component , OnInit} from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 
 @Component({
@@ -6,8 +6,12 @@ import { HttpClient } from "@angular/common/http";
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.css"]
 })
-export class AppComponent {
-  ngOnInit(){}
+export class AppComponent implements OnInit {
+ 
+  public ngOnInit(): void {
+     this.getLocation();
+   
+  }
   title = "Weather";
   lat: Number;
   lon: Number;
@@ -35,7 +39,7 @@ export class AppComponent {
     }
   }
 
-    response: any;
+  response: any;
   constructor(private http: HttpClient) {}
    Weather() {
     this.http
@@ -47,6 +51,10 @@ export class AppComponent {
         console.log(this.response);
        
       });
+  }
+  tougle= false;
+  render(){
+   setTimeout(()=> this.tougle= !this.tougle,500)
   }
   
  

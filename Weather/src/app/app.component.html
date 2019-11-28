@@ -1,3 +1,13 @@
-<button (click)="getLocation()">Coords</button>
-<a routerLink="/link"><button (click)="Weather()">Weather</button></a>
-<router-outlet></router-outlet>
+
+<button (click)="Weather()"(click)='render()'>Weather</button>
+  <br>
+  <hr>
+  
+  <div *ngIf ="tougle">
+    <ul>
+      <li>City: {{response.name}} /Country: {{response.sys.country}}</li>
+      <li>Temperature: {{response.main.temp}} in kelvins</li>
+      <li>Pressure: {{response.main.pressure}}</li>
+      <li>Humidity: {{response.main.humidity}}</li>
+    </ul>
+  </div>
